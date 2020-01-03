@@ -1,0 +1,7 @@
+.dropdown {
+    float: right;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}

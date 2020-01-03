@@ -1,0 +1,25 @@
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="/products" [ngClass]="{'active':navigationProductsService.navTab==='list'}" (click)="onNavChange($event, 'list')">
+            Lista
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/products/{{ navigationProductsService.currentProduct.id }}" *ngIf="navigationProductsService.currentProduct; else defaultLinkValue" [ngClass]="{'active':navigationProductsService.navTab==='detail'}" (click)="onNavChange($event, 'detail')">
+            Dettaglio
+        </a>
+        <ng-template #defaultLinkValue>
+            <a class="nav-link" href="/products/0" [ngClass]="{'active':navigationProductsService.navTab==='detail'}" (click)="onNavChange($event, 'detail')">
+                Dettaglio
+            </a>
+        </ng-template>
+    </li>
+</ul>
+
+<div class=container *ngIf="navigationProductsService.navTab==='list'; else productDetailBlock">
+    <app-products-list></app-products-list>
+</div>
+<ng-template #productDetailBlock>
+    <app-products-detail></app-products-detail>
+</ng-template>

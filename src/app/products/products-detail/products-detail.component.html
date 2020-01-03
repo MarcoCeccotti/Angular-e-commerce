@@ -1,0 +1,45 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group" *ngIf="navigationProductsService.currentProduct == undefined; else definedProduct">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" name="name" disabled>
+
+        <label for="quantity">Quantità</label>
+        <input type="text" class="form-control" id="quantity" name="quantity" disabled>
+    </div>
+
+    <ng-template #definedProduct>
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input  type="text"
+                    id="name"
+                    class="form-control"
+                    [(ngModel)]="navigationProductsService.currentProduct.name"
+                    [readonly]="!navigationProductsService.currentProduct.editable"
+                    #name="ngModel"
+                    name="name"
+                    required/>
+
+            <span class="help-block" *ngIf="!name.valid && name.touched">Inserisci il nome del prodotto</span>
+
+            <label for="quantity">Quantità</label>
+            <input  type="number"
+                    class="form-control"
+                    [(ngModel)]="navigationProductsService.currentProduct.quantity"
+                    [readonly]="!navigationProductsService.currentProduct.editable" 
+                    #quantity="ngModel"
+                    name="quantity"
+                    required/>
+
+            <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Inserisci la quantità del prodotto</span>
+        </div>
+    </ng-template>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary btn-sm btn-lg active" *ngIf="navigationProductsService.insertingNewRow" [disabled]="!f.valid">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onAbort()">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+</form>

@@ -1,0 +1,66 @@
+<div *ngIf="endedFetch; else waitFetching">
+    <button type="button" id="add-product" class="btn btn-primary btn-sm btn-lg active" (click)="onAddProduct()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Azioni</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantità</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products">
+            <tr>
+                <td>
+                    <a routerLink="/products/{{ product.id }}" class="btn btn-primary btn-sm btn-lg active" role="button" aria-pressed="true" (click)="onEditProduct(product)" *ngIf="!product.editable">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onDeleteRow(product)" *ngIf="!product.editable">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <a routerLink="/products/{{ product.id }}" class="btn btn-primary btn-sm btn-lg active" role="button" aria-pressed="true" (click)="onCheckProduct(product)" *ngIf="!product.editable">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </a>
+
+                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onSaveProduct()" *ngIf="product.editable">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onAbort()" *ngIf="product.editable">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+
+                <td>
+                    <input  type="text"
+                            class="form-control"
+                            [(ngModel)]="product.name"
+                            [readonly]="!product.editable"
+                            #name="ngModel"
+                            name="name-list"
+                            required/>
+        
+                    <span class="help-block" *ngIf="!name.valid && name.touched">Inserisci il nome del prodotto</span>
+                </td>
+                <td>
+                    <input  type="number"
+                            class="form-control"
+                            [(ngModel)]="product.quantity"
+                            [readonly]="!product.editable"
+                            #quantity="ngModel"
+                            name="quantity-list"
+                            required/>
+        
+                    <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Inserisci la quantità del prodotto</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #waitFetching>
+    <div class="spinner-border m-12" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>

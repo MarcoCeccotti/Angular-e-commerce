@@ -1,0 +1,28 @@
+#login-title {
+    text-align:center;
+}
+
+#login-subtitle {
+    text-align:center;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.login-container {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 25px;
+    flex: 0 0 70%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.fill-horizontal {
+    flex: 0 0 15%;
+}

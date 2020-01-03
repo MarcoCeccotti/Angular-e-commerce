@@ -1,0 +1,14 @@
+<div *ngIf="router.url !== '/login' && router.url !== '/recover-password' && router.url !== '/registrate'">
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ headerService.userLogged }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="profile">Profilo</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+    </div>
+
+    <hr>
+</div>

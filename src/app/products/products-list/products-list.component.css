@@ -1,0 +1,8 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+button#add-product {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
