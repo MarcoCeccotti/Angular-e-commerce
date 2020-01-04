@@ -7,7 +7,6 @@ import { HttpOptions } from '../services/http-options.service';
 import { MessagesComponent } from '../messages/messages.component';
 import { MessagesService } from '../services/messages.service';
 import { NgForm } from '@angular/forms';
-// import { HeaderService } from '../services/header.service';
 import { TokenDecoderService } from '../services/token-decoder.service';
 import { UserService } from '../services/user.service';
 import { UserSession } from '../services/user-session.service';
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
               private loginService: LoginService,
               private userService: UserService,
               private messagesService: MessagesService,
-              // private headerService: HeaderService,
               private tokenDecoderService: TokenDecoderService,
               private router: Router,
               private httpOptions: HttpOptions) {}
@@ -49,7 +47,6 @@ export class LoginComponent implements OnInit {
                         console.log(response.payload.access_token);
                         this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + response.payload.access_token);
                         this.httpOptions.httpOptionsRefresh.headers = this.httpOptions.httpOptionsRefresh.headers.set('refresh_token', response.payload.refresh_token);
-                        // this.headerService.userLogged = this.form.value.username;
                         this.router.navigate(['/products']);
                         this.messagesService.message.message = 'Utente ' + this.form.value.username + ' connesso con successo';
                         this.messagesService.message.type = 'success';
@@ -58,7 +55,7 @@ export class LoginComponent implements OnInit {
                         this.userService.userInfo(tokenInfo.sub)
                                         .subscribe(responseUser => {
                                           this.userSession.user = responseUser.payload;
-                                          console.log(this.userSession.user);
+                                          localStorage.setItem('user-session', JSON.stringify(responseUser.payload));
                                         },
                                         error => {
                                           console.log(error.error);
