@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
-@Injectable({
-    providedIn: 'root'
-})
-export class HeaderService {
+// @Injectable({
+//     providedIn: 'root'
+// })
+// export class HeaderService {
 
-    userLogged: string;
-}
+//     userLogged: string;
+// }
