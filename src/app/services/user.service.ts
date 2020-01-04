@@ -15,7 +15,7 @@ export class UserService {
                 private httpOptions: HttpOptions) {}
 
     public userInfo(username: string): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('access_token', localStorage.getItem('access_token'));
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.get<WrapperResponse>(loginBaseUrl + '/user/' + username, this.httpOptions.httpOptionsProducts);
     }
 }

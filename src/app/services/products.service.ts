@@ -22,14 +22,17 @@ export class ProductsService {
     }
 
     getProduct(id: number): Observable<WrapperResponse> {
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.get<WrapperResponse>(productBaseUrl + '/' + id, this.httpOptions.httpOptionsProducts);
     }
 
     saveProduct(product: ProductModel): Observable<WrapperResponse> {
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/save', product, this.httpOptions.httpOptionsProducts);
     }
 
     deleteProduct(product: ProductModel): Observable<WrapperResponse> {
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.delete<WrapperResponse>(productBaseUrl + '/delete/' + product.id, this.httpOptions.httpOptionsProducts);
     }
 }
