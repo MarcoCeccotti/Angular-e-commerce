@@ -1,66 +1,26 @@
-<div class="registrate-wrapper">
+<div class="profile-wrapper">
     <div class="fill-horizontal"></div>
-    <div class="registrate-container">
-        <h1 id="registrate-title">Profilo Utente</h1>
+    <div class="profile-container">
+        <h1 id="profile-title">Profilo Utente</h1>
         <div class="row">
-            <form role="form" class="col-xs-12">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <p>{{ userSession.user.username }}</p>
-                </div>
+            <div>
+                <label for="username">Username</label>
+                <p>{{ userSession.user.username }}</p>
+            </div>
 
-                <div class="form-group">
-                    <label for="passwd">Password</label>
-                    <input  type="text"
-                            id="passwd"
-                            class="form-control"
-                            ngModel
-                            name="passwd"
-                            #passwd="ngModel"
-                            required/>
-                </div>
-                <span class="help-block" *ngIf="!passwd.valid && passwd.touched">Inserisci una password</span>
+            <div>
+                <label for="password">Password</label>
+                <p>{{ userSession.user.passwd }}</p>
+            </div>
 
-                <div class="form-group">
-                    <label for="confirm_password">Conferma Password</label>
-                    <input  type="text"
-                            id="confirm_password"
-                            class="form-control"
-                            ngModel
-                            name="confirm_passwd"
-                            #confirm_passwd="ngModel"
-                            required/>
-                </div>
-                <span class="help-block" *ngIf="confirm_passwd.touched && confirm_passwd.value !== passwd.value">Le due password non sono uguali</span>
+            <div>
+                <label for="email">Email</label>
+                <p>{{ userSession.user.email }}</p>
+            </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input  type="email"
-                            id="email"
-                            class="form-control"
-                            ngModel
-                            name="email"
-                            #email="ngModel"
-                            required
-                            email/>
-                </div>
-                <span class="help-block" *ngIf="!email.valid && email.touched">Inserisci una email valida</span>
-
-                <div class="form-group">
-                    <label for="company_id">Company</label>
-                    <input  type="text"
-                            id="company_id"
-                            class="form-control"
-                            ngModel
-                            name="company_id"
-                            #company="ngModel"
-                            required/>
-                </div>
-
-                <button type="button" class="btn btn-primary" (click)="back()">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </form>
+            <button type="button" class="btn btn-primary" (click)="back()">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
     <div class="fill-horizontal"></div>
