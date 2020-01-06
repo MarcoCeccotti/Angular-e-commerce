@@ -10,10 +10,9 @@ export class AuthGuard implements CanActivate {
     constructor(private tokenCheckService: TokenCheckService) {}
 
     canActivate(): Observable<boolean> {
-        // return this.tokenCheckService.checkToken()
-        //     .pipe(switchMap(res => {
-        //         return of(true);
-        //     }));
-        return of(true);
+        return this.tokenCheckService.checkToken()
+            .pipe(switchMap(res => {
+                return of(true);
+            }));
     }
 }

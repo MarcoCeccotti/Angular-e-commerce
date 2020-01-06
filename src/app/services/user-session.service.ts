@@ -9,7 +9,6 @@ export class UserSession {
 
     constructor() {
 
-        // TODO PER OTTENERE IL CODICE 'ROTTO' COMMENTA QUESTA RIGA DI CODICE SOTTO
         this.user = JSON.parse(localStorage.getItem('user-session'));
     }
 }

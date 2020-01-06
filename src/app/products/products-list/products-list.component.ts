@@ -18,8 +18,8 @@ export class ProductsListComponent implements OnInit {
                 private navigationProductsService: NavigationProductsService) {}
 
     ngOnInit(): void {
-        this.endedFetch = true;
-        // this.fetchProducts();
+        this.endedFetch = false;
+        this.fetchProducts();
     }
 
     fetchProducts(): void {

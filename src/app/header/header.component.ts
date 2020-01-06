@@ -19,15 +19,9 @@ export class HeaderComponent implements OnInit {
                 private messagesService: MessagesService,
                 private httpOptions: HttpOptions,
                 public userSession: UserSession,
-                // public headerService: HeaderService,
                 public router: Router) {}
 
-    ngOnInit(): void {
-        // const tokenInfo = this.getDecodedAccessToken(localStorage.getItem('access_token'));
-        // if (tokenInfo) {
-        //     this.headerService.userLogged = tokenInfo.sub;
-        // }
-    }
+    ngOnInit(): void {}
 
     logout(): void {
         this.loginService.logout()
@@ -36,7 +30,6 @@ export class HeaderComponent implements OnInit {
                           localStorage.removeItem('refresh_token');
                           this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.delete('Authorization');
                           this.httpOptions.httpOptionsRefresh.headers = this.httpOptions.httpOptionsRefresh.headers.delete('refresh_token');
-                        //   this.headerService.userLogged = undefined;
                           this.router.navigate(['/login']);
                           this.messagesService.message.message = response.payload;
                        },
