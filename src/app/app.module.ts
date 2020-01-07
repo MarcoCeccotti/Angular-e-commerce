@@ -18,12 +18,10 @@ import { MessagesService } from './services/messages.service';
 import { RoleGuard } from './services/role-guard.service';
 import { RecoverPasswordComponent } from './recover_password/recover-password.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { HeaderComponent } from './header/header.component';
 import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProfileComponent } from './profile/profile.component';
 import { UserSession } from './services/user-session.service';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
@@ -32,17 +30,15 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     MessagesComponent,
     RecoverPasswordComponent,
     ConfirmDialogComponent,
-    HeaderComponent,
     FooterComponent,
-    RegistrateComponent,
-    ProfileComponent,
-    ShoppingCartComponent
+    RegistrateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderModule
   ],
   entryComponents: [
     ConfirmDialogComponent
