@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as jwt_decode from 'jwt-decode';
 import { LoginService } from '../services/login.service';
 import { MessagesService } from '../services/messages.service';
 import { HttpOptions } from '../services/http-options.service';
 import { Router } from '@angular/router';
-// import { HeaderService } from '../services/header.service';
 import { UserSession } from '../services/user-session.service';
 
 @Component({
@@ -36,13 +34,5 @@ export class HeaderComponent implements OnInit {
                        error => {
                             console.log(error);
                        });
-    }
-
-    public getDecodedAccessToken(token: string): any {
-        try {
-            return jwt_decode(token);
-        } catch (Error) {
-            return null;
-        }
     }
 }

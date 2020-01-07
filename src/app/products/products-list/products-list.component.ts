@@ -167,4 +167,8 @@ export class ProductsListComponent implements OnInit {
         this.navigationProductsService.currentProduct = product;
         this.navigationProductsService.insertingNewRow = false;
     }
+
+    public onAddSelectedProduct(product: ProductModel): void {
+        // TODO CREARE UN QUALCOSA (PRESUMO UN SERVIZIO) PER SALVARE LE RIGHE SELEZIONATE
+    }
 }

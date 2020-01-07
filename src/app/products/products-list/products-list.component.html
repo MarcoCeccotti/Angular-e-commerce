@@ -23,6 +23,9 @@
                     <a routerLink="/products/{{ product.id }}" class="btn btn-primary btn-sm btn-lg active" role="button" aria-pressed="true" (click)="onCheckProduct(product)" *ngIf="!product.editable">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </a>
+                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onAddSelectedProduct(product)" *ngIf="!product.editable">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </button>
 
                     <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="onSaveProduct()" *ngIf="product.editable">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>

@@ -23,6 +23,7 @@ import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserSession } from './services/user-session.service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserSession } from './services/user-session.service';
     HeaderComponent,
     FooterComponent,
     RegistrateComponent,
-    ProfileComponent
+    ProfileComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
