@@ -5,6 +5,7 @@ import { MessagesService } from '../services/messages.service';
 import { HttpOptions } from '../services/http-options.service';
 import { Router } from '@angular/router';
 import { UserSession } from '../services/user-session.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,12 @@ export class HeaderComponent implements OnInit {
                 private messagesService: MessagesService,
                 private httpOptions: HttpOptions,
                 public userSession: UserSession,
+                private location: Location,
                 public router: Router) {}
 
     ngOnInit(): void {}
 
-    logout(): void {
+    public logout(): void {
         this.loginService.logout()
                        .subscribe(response => {
                           localStorage.removeItem('access_token');
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit {
                        error => {
                             console.log(error);
                        });
+    }
+
+    public back(): void {
+      this.location.back();
     }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserSession } from '../services/user-session.service';
-import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-profile',
@@ -10,16 +9,9 @@ import { Location } from '@angular/common';
 })
 export class ProfileComponent implements OnInit {
 
-    constructor(public userSession: UserSession,
-                private location: Location) {
-                    console.log('SONO QUIIIIIIIIIIIIIIIII');
-                }
+    constructor(public userSession: UserSession) {}
 
     ngOnInit(): void {
         console.log(this.userSession.user);
-    }
-
-    back() {
-        this.location.back();
     }
 }
