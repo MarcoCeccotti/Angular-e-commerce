@@ -2,12 +2,19 @@
     <table class="table table-bordered table-sm">
         <thead class="thead-dark">
             <tr>
+            <th scope="col">Azioni</th>
             <th scope="col">Nome</th>
             <th scope="col">Quantità</th>
             </tr>
         </thead>
+        
         <tbody *ngFor="let product of selectedProducts">
             <tr>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="removeFromShoppingCart(product)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
                 <td>
                     <input  type="text"
                             class="form-control"

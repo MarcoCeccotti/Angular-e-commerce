@@ -13,8 +13,21 @@ export class ShoppingCartComponent implements OnInit {
 
     constructor(private userSession: UserSession) {
 
-        this.selectedProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
+      this.selectedProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
     }
 
     ngOnInit(): void {}
+
+    public removeFromShoppingCart(product: ProductModel): void {
+
+      let index = 0;
+      for (index = 0; index < this.selectedProducts.length; index++) {
+        if (this.selectedProducts[index].id === product.id) {
+          break;
+        }
+      }
+      this.selectedProducts.splice(index, 1);
+
+      localStorage.setItem('shopping-cart-' + this.userSession.user.username, JSON.stringify(this.selectedProducts));
+    }
 }
