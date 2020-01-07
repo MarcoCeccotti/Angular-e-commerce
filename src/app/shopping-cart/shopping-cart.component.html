@@ -1,0 +1,36 @@
+<div>
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantità</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of selectedProducts">
+            <tr>
+                <td>
+                    <input  type="text"
+                            class="form-control"
+                            [(ngModel)]="product.name"
+                            [readonly]="!product.editable"
+                            #name="ngModel"
+                            name="name-list"
+                            required/>
+        
+                    <span class="help-block" *ngIf="!name.valid && name.touched">Inserisci il nome del prodotto</span>
+                </td>
+                <td>
+                    <input  type="number"
+                            class="form-control"
+                            [(ngModel)]="product.quantity"
+                            [readonly]="!product.editable"
+                            #quantity="ngModel"
+                            name="quantity-list"
+                            required/>
+        
+                    <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Inserisci la quantità del prodotto</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

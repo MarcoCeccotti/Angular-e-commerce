@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product.model';
+import { UserSession } from '../services/user-session.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,11 +11,9 @@ export class ShoppingCartComponent implements OnInit {
 
     public selectedProducts: ProductModel[];
 
-    constructor() {
-        // TODO DOVREI RICOSTRUIRE IL VETTORE DEGLI ELEMENTI SELEZIONATI DALL'UTENTE
+    constructor(private userSession: UserSession) {
 
-        // TODO SALVO NEL LocalStorage TUTTI I PRODOTTI SELEZIONATI, RECUPERANDOLI QUINDI DA QUI OGNI VOLTA
-        // TODO CAPIRE QUINDI COME FARE A SALVARE UN VETTORE NEL LocalStorage
+        this.selectedProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
     }
 
     ngOnInit(): void {}
