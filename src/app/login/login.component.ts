@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
   @ViewChild('f', {static: false})
   private form: NgForm;
 
-  messages: MessagesComponent;
-
   constructor(private userSession: UserSession,
               private loginService: LoginService,
               private userService: UserService,
@@ -34,6 +32,10 @@ export class LoginComponent implements OnInit {
               private httpOptions: HttpOptions) {}
 
   ngOnInit(): void {
+
+    // TODO IMPLEMENTARE L'AUTOLOGIN (L'AUTOLOGOUT GIA LO HO CON L'AUTHGUARD)
+    // CIOE IN PRATICA DOVREI FAR SI CHE SE IL TOKEN E' VALIDO NON DEVO PASSARE DAL LOGIN MA ANDARE DRETTAMENTE IN PRODUCTS, ALMENO...
+
     if (localStorage.getItem('access_token')) {
       this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     }

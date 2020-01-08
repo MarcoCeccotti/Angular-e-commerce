@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ProductModel } from '../../models/product.model';
 import { NavigationProductsService } from '../../services/navigation-products.service';
-import { UserSession } from '../../services/user-session.service';
 
 @Component({
     selector: 'app-products-list',
@@ -16,8 +15,7 @@ export class ProductsListComponent implements OnInit {
     public endedFetch: boolean;
 
     constructor(private productsService: ProductsService,
-                private navigationProductsService: NavigationProductsService,
-                private userSession: UserSession) {}
+                private navigationProductsService: NavigationProductsService) {}
 
     ngOnInit(): void {
         this.endedFetch = false;
@@ -172,12 +170,19 @@ export class ProductsListComponent implements OnInit {
 
     public onAddSelectedProduct(product: ProductModel): void {
 
-        let cartProducts: ProductModel[];
-        cartProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
-        if (cartProducts == null) {
-            cartProducts = [];
-        }
-        cartProducts.push(product);
-        localStorage.setItem('shopping-cart-' + this.userSession.user.username, JSON.stringify(cartProducts));
+        this.productsService.newShoppingItem(product, false)
+                            .subscribe(response => {
+                            }, error => {
+                                alert('ERRORE NELLA SELEZIONE DEL PRODOTTO');
+                            }
+        );
+
+        // let cartProducts: ProductModel[];
+        // cartProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
+        // if (cartProducts == null) {
+        //     cartProducts = [];
+        // }
+        // cartProducts.push(product);
+        // localStorage.setItem('shopping-cart-' + this.userSession.user.username, JSON.stringify(cartProducts));
     }
 }
