@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { HttpOptions } from '../services/http-options.service';
 
-import { MessagesComponent } from '../messages/messages.component';
 import { MessagesService } from '../services/messages.service';
 import { NgForm } from '@angular/forms';
 import { TokenDecoderService } from '../services/token-decoder.service';
@@ -15,8 +14,7 @@ import { tap, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -32,9 +30,6 @@ export class LoginComponent implements OnInit {
               private httpOptions: HttpOptions) {}
 
   ngOnInit(): void {
-
-    // TODO IMPLEMENTARE L'AUTOLOGIN (L'AUTOLOGOUT GIA LO HO CON L'AUTHGUARD)
-    // CIOE IN PRATICA DOVREI FAR SI CHE SE IL TOKEN E' VALIDO NON DEVO PASSARE DAL LOGIN MA ANDARE DRETTAMENTE IN PRODUCTS, ALMENO...
 
     if (localStorage.getItem('access_token')) {
       this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));

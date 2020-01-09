@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ProductModel } from '../../models/product.model';
 import { NavigationProductsService } from '../../services/navigation-products.service';
+import { MessagesService } from '../../services/messages.service';
 
 @Component({
     selector: 'app-products-list',
@@ -15,7 +16,8 @@ export class ProductsListComponent implements OnInit {
     public endedFetch: boolean;
 
     constructor(private productsService: ProductsService,
-                private navigationProductsService: NavigationProductsService) {}
+                private navigationProductsService: NavigationProductsService,
+                private messagesService: MessagesService) {}
 
     ngOnInit(): void {
         this.endedFetch = false;
@@ -172,17 +174,11 @@ export class ProductsListComponent implements OnInit {
 
         this.productsService.newShoppingItem(product, false)
                             .subscribe(response => {
+                                this.messagesService.message.message = 'Hai appena aggiunto 1 quantità di ' + response.payload.name + ' al tuo carrello';
+                                this.messagesService.message.type = 'success';
                             }, error => {
                                 alert('ERRORE NELLA SELEZIONE DEL PRODOTTO');
                             }
         );
-
-        // let cartProducts: ProductModel[];
-        // cartProducts = JSON.parse(localStorage.getItem('shopping-cart-' + this.userSession.user.username));
-        // if (cartProducts == null) {
-        //     cartProducts = [];
-        // }
-        // cartProducts.push(product);
-        // localStorage.setItem('shopping-cart-' + this.userSession.user.username, JSON.stringify(cartProducts));
     }
 }

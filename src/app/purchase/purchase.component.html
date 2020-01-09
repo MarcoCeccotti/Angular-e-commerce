@@ -1,24 +1,14 @@
 <div *ngIf="endedFetch; else waitFetching">
     <table class="table table-bordered table-sm">
-
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Azioni</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Quantità</th>
             </tr>
         </thead>
         
-        <tbody *ngFor="let product of selectedProducts">
+        <tbody *ngFor="let product of purchasedProducts">
             <tr>
-                <td>
-                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="removeFromShoppingCart(product)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="buyProduct(product)">
-                        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                    </button>
-                </td>
                 <td>
                     <input  type="text"
                             class="form-control"
@@ -44,18 +34,14 @@
             </tr>
         </tbody>
     </table>
-
-    <button type="button" class="btn btn-primary btn-sm btn-lg active" (click)="buyAllProducts(selectedProducts)" *ngIf="selectedProducts && selectedProducts.length > 0">
-        <span class="glyphicon glyphicon-usd" aria-hidden="true"> Acquista tutti</span>
-    </button>
 </div>
 
-<a routerLink="/products" button type="button" class="btn btn-primary">
-    <span class="glyphicon glyphicon-home" aria-hidden="true"> Torna alla selezione prodotti</span>
+<a routerLink="/shopping-cart" button type="button" class="btn btn-primary">
+    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"> Vai al carrello</span>
 </a>
 
-<a routerLink="/purchase" button type="button" class="btn btn-primary">
-    <span class="glyphicon glyphicon-money" aria-hidden="true"> Vai alla sezione prodotti acquistati</span>
+<a routerLink="/products" button type="button" class="btn btn-primary">
+    <span class="glyphicon glyphicon-money" aria-hidden="true">Torna alla selezione prodotti</span>
 </a>
 
 <ng-template #waitFetching>

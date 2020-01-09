@@ -52,4 +52,14 @@ export class ProductsService {
         this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/delete/' + this.userSession.user.username + '/' + bought, product, this.httpOptions.httpOptionsProducts);
     }
+
+    public buyProduct(product: ProductModel, bought: boolean): Observable<WrapperResponse> {
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+        return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/buy/' + this.userSession.user.username + '/' + bought, product, this.httpOptions.httpOptionsProducts);
+    }
+
+    public buyAllProducts(products: ProductModel[], bought: boolean): Observable<WrapperResponse> {
+        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+        return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/buy-all/' + this.userSession.user.username + '/' + bought, products, this.httpOptions.httpOptionsProducts);
+    }
 }

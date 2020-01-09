@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,7 +13,6 @@ import { LoginService } from './services/login.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { HttpOptions } from './services/http-options.service';
 import { TokenCheckService } from './services/token-check.service';
-import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './services/messages.service';
 import { RoleGuard } from './services/role-guard.service';
 import { RecoverPasswordComponent } from './recover_password/recover-password.component';
@@ -22,16 +21,18 @@ import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserSession } from './services/user-session.service';
 import { HeaderModule } from './header/header.module';
+import { MessagesComponent } from './messages/messages.component';
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MessagesComponent,
     RecoverPasswordComponent,
     ConfirmDialogComponent,
     FooterComponent,
-    RegistrateComponent
+    RegistrateComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +49,11 @@ import { HeaderModule } from './header/header.module';
     LoginService,
     TokenCheckService,
     MessagesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
     UserSession,
     HttpOptions,
     AuthGuard,

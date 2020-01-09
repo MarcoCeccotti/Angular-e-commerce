@@ -16,12 +16,14 @@ import { MessagesService } from '../services/messages.service';
 import { UserSession } from '../services/user-session.service';
 import { HttpOptions } from '../services/http-options.service';
 import { AuthGuard } from '../services/auth-guard.service';
+import { PurchaseComponent } from '../purchase/purchase.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ProfileComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
