@@ -24,8 +24,8 @@ export class TokenCheckService {
             if (tokenInfo) {
                 const now = Date.now();
 
-                console.log('TOKEN EXPIRE = ' + (now > tokenInfo.exp * 1000));
-                if (now < tokenInfo.exp * 1000) {
+                console.log('TOKEN EXPIRE = ' + (now - tokenInfo.exp * 1000 > -45000));
+                if (now - tokenInfo.exp * 1000 < -45000) {
                     return of(true);
 
                 } else {
