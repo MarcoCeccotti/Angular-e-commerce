@@ -20,9 +20,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserSession } from './services/user-session.service';
-import { HeaderModule } from './header/header.module';
-import { MessagesComponent } from './messages/messages.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { HeaderRoutingModule } from './header/header-routing.module';
 
 @NgModule({
   declarations: [
@@ -31,15 +30,13 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     RecoverPasswordComponent,
     ConfirmDialogComponent,
     FooterComponent,
-    RegistrateComponent,
-    MessagesComponent
+    RegistrateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    HeaderModule
+    AppRoutingModule
   ],
   entryComponents: [
     ConfirmDialogComponent
