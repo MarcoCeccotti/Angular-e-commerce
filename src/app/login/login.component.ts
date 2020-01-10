@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
         })
       ).subscribe(responseUser => {
         this.userSession.user = responseUser.payload;
+        console.log(responseUser.payload);
         localStorage.setItem('user-session', JSON.stringify(responseUser.payload));
         // Soltanto adesso fai la navigazione alla nuova pagina.
         this.router.navigate(['/products']);

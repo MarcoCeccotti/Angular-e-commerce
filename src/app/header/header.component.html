@@ -3,25 +3,30 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ userSession.user.username }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/profile">Profilo</a>
-                    <a class="dropdown-item" routerLink="/purchase">Acquisti</a>
-                <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" routerLink="/login" (click)="logout()">Logout</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <button routerLink="/shopping-cart" class="btn btn-outline-primary my-2 my-sm-0">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"> Carrello</span>
-                </button>
-            </li>
-        </ul>
+    
+    <div>
+        <img 
+            src="{{ userSession.user.image_path }}"
+            alt="{{ userSession.user.username }}"
+            class="img-responsive rounded-circle"
+            style="max-height: 50px;"
+        >
     </div>
+
+
+    <div class="dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ userSession.user.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/profile">Profilo</a>
+            <a class="dropdown-item" routerLink="/purchase">Acquisti</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/login" (click)="logout()">Logout</a>
+        </div>
+    </div>
+
+    <button routerLink="/shopping-cart" class="btn btn-outline-primary my-2 my-sm-0">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"> Carrello</span>
+    </button>
 </nav>

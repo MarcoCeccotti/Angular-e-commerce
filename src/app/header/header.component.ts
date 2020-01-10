@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
                 private httpOptions: HttpOptions,
                 public userSession: UserSession,
                 private location: Location,
-                public router: Router) {}
+                public router: Router) {
+                  console.log(userSession.user.image_path);
+                }
 
     ngOnInit(): void {}
 
