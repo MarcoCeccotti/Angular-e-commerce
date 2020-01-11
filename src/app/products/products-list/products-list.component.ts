@@ -53,10 +53,10 @@ export class ProductsListComponent implements OnInit {
                 for (let index = 0; index < this.products.length; index++) {
 
                     if (this.products[index].id === this.navigationProductsService.currentProduct.id) {
-                        // rimuove l'elemento in posisizone index-esima
-                        this.products.splice(index, 1);
+                        // rimuove l'elemento in posizione index-esima
+                        this.products.splice(index, 1, this.navigationProductsService.currentProduct);
                         // al suo posto ci inserisce l'oggetto salvato nel service
-                        this.products.splice(index, 0, this.navigationProductsService.currentProduct);
+                        // this.products.splice(index, 0, this.navigationProductsService.currentProduct);
                         break;
                     }
                 }
@@ -174,7 +174,7 @@ export class ProductsListComponent implements OnInit {
 
         this.productsService.newShoppingItem(product, false)
                             .subscribe(response => {
-                                this.messagesService.message.message = 'Hai appena aggiunto 1 quantità di ' + response.payload.name + ' al tuo carrello';
+                                this.messagesService.message.message = 'Hai appena aggiunto 1 quantità di ' + product.name + ' al tuo carrello';
                                 this.messagesService.message.type = 'success';
                             }, error => {
                                 alert('ERRORE NELLA SELEZIONE DEL PRODOTTO');

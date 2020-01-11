@@ -1,3 +1,7 @@
+<app-header *ngIf="router.url !== '/login' && router.url !== '/recover-password' && router.url !== '/registrate'"></app-header>
+
+<app-messages></app-messages>
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active" href="/products" [ngClass]="{'active':navigationProductsService.navTab==='list'}" (click)="onNavChange($event, 'list')">

@@ -11,7 +11,7 @@ import { NavigationProductsService } from '../services/navigation-products.servi
 export class NavigationProductsComponent implements OnInit {
 
   constructor(public navigationProductsService: NavigationProductsService,
-              private router: Router) {}
+              public router: Router) {}
 
   ngOnInit(): void {}
 

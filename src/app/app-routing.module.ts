@@ -5,12 +5,11 @@ import { RecoverPasswordComponent } from './recover_password/recover-password.co
 import { RegistrateComponent } from './registrate/registrate.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'recover-password', component: RecoverPasswordComponent },
-    { path: 'registrate', component: RegistrateComponent },
-    { path: 'products', loadChildren: () => import('./navigation-products/navigation-products.module').then(routing => routing.NavigationModule) },
-    { path: 'products', loadChildren: () => import('./header/header.module').then(routing => routing.HeaderModule) }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'recover-password', component: RecoverPasswordComponent },
+  { path: 'registrate', component: RegistrateComponent },
+  { path: 'products', loadChildren: () => import('./navigation-products/navigation-products.module').then(routing => routing.NavigationModule) }
 ];
 
 @NgModule({

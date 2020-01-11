@@ -10,16 +10,18 @@ import { ProductsService } from '../services/products.service';
 import { NavigationProductsComponent } from './navigation-products.component';
 import { NavigationProductsService } from '../services/navigation-products.service';
 import { HttpOptions } from '../services/http-options.service';
-import { MessagesService } from '../services/messages.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavigationRoutingModule } from './navigation-products-routing.module';
+import { HeaderModule } from '../header/header.module';
+import { MessagesComponent } from '../messages/messages.component';
 
 @NgModule({
   declarations: [
     ProductsListComponent,
     ProductsDetailComponent,
-    NavigationProductsComponent
+    NavigationProductsComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { NavigationRoutingModule } from './navigation-products-routing.module';
     FormsModule,
     RouterModule,
     NgbModule,
-    NavigationRoutingModule
+    NavigationRoutingModule,
+    HeaderModule
   ],
   exports: [
     ProductsListComponent,
@@ -37,7 +40,6 @@ import { NavigationRoutingModule } from './navigation-products-routing.module';
   providers: [
     ProductsService,
     NavigationProductsService,
-    MessagesService,
     HttpOptions
   ],
   bootstrap: []

@@ -5,16 +5,17 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { RoleGuard } from '../services/role-guard.service';
 
 const routes: Routes = [
-    {
-      path: '',
-      canActivate: [AuthGuard, RoleGuard],
-      component: NavigationProductsComponent,
-      data: {
-        roles: ['ROLE_ADM']
-      }
-    },
-    {path: ':id', canActivate: [AuthGuard], component: NavigationProductsComponent},
-    {path: '**', redirectTo: '/products'}
+  {
+    path: '',
+    canActivate: [AuthGuard, RoleGuard],
+    component: NavigationProductsComponent,
+    data: {
+      roles: ['ROLE_ADM']
+    }
+  },
+  { path: ':id', canActivate: [AuthGuard], component: NavigationProductsComponent },
+  { path: '', loadChildren: () => import('../header/header.module').then(routing => routing.HeaderModule) },
+  { path: '**', redirectTo: '/products' }
 ];
 
 @NgModule({
