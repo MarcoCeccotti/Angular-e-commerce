@@ -14,7 +14,7 @@ const routes: Routes = [
     }
   },
   { path: ':id', canActivate: [AuthGuard], component: NavigationProductsComponent },
-  { path: '', loadChildren: () => import('../header/header.module').then(routing => routing.HeaderModule) },
+  { path: '**', loadChildren: () => import('../header/header.module').then(routing => routing.HeaderModule) },
   { path: '**', redirectTo: '/products' }
 ];
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { HeaderRoutingModule } from './header-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -16,6 +15,8 @@ import { HttpOptions } from '../services/http-options.service';
 import { AuthGuard } from '../services/auth-guard.service';
 import { PurchaseComponent } from '../purchase/purchase.component';
 import { CommonModule } from '@angular/common';
+import { HeaderRoutingModule } from './header-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     HttpClientModule,
     FormsModule,
+    RouterModule,
     HeaderRoutingModule
   ],
   providers: [

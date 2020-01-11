@@ -21,7 +21,7 @@ import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserSession } from './services/user-session.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
-import { HeaderRoutingModule } from './header/header-routing.module';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { HeaderRoutingModule } from './header/header-routing.module';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderModule
   ],
   entryComponents: [
     ConfirmDialogComponent
