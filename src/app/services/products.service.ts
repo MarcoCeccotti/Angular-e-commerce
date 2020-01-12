@@ -24,42 +24,34 @@ export class ProductsService {
     }
 
     public getProduct(id: number): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.get<WrapperResponse>(productBaseUrl + '/' + id, this.httpOptions.httpOptionsProducts);
     }
 
     public saveProduct(product: ProductModel): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/save', product, this.httpOptions.httpOptionsProducts);
     }
 
     public deleteProduct(product: ProductModel): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.delete<WrapperResponse>(productBaseUrl + '/delete/' + product.id, this.httpOptions.httpOptionsProducts);
     }
 
     public shopping(bought: boolean): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.get<WrapperResponse>(productBaseUrl + '/shopping/' + this.userSession.user.username + '/' + bought, this.httpOptions.httpOptionsProducts);
     }
 
     public newShoppingItem(product: ProductModel, bought: boolean): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/new/' + this.userSession.user.username + '/' + bought, product, this.httpOptions.httpOptionsProducts);
     }
 
     public deleteShoppingItem(product: ProductModel, bought: boolean): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/delete/' + this.userSession.user.username + '/' + bought, product, this.httpOptions.httpOptionsProducts);
     }
 
     public buyProduct(product: ProductModel, bought: boolean): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/buy/' + this.userSession.user.username + '/' + bought, product, this.httpOptions.httpOptionsProducts);
     }
 
     public buyAllProducts(products: ProductModel[], bought: boolean): Observable<WrapperResponse> {
-        this.httpOptions.httpOptionsProducts.headers = this.httpOptions.httpOptionsProducts.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
         return this.http.post<WrapperResponse>(productBaseUrl + '/shopping/buy-all/' + this.userSession.user.username + '/' + bought, products, this.httpOptions.httpOptionsProducts);
     }
 }

@@ -14,9 +14,11 @@ export class AuthInterceptorService implements HttpInterceptor {
 
         console.log('Richiesta intercettata ' + req.url);
 
-        if (req.url.includes('oauth') || (req.url.includes('oauth') && (req.url.includes('user') || req.url.includes('refresh')))) {
+        if (req.url.includes('oauth') || (req.url.includes('user') || req.url.includes('refresh'))) {
             return next.handle(req);
         }
+
+        req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
 
         return this.tokenCheckService.checkToken()
             .pipe(
