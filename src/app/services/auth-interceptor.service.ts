@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
-import { TokenCheckService } from './services/token-check.service';
-import { switchMap, catchError } from 'rxjs/operators';
+import { TokenCheckService } from './token-check.service';
+import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()

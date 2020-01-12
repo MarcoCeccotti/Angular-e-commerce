@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthGuard } from '../services/auth-guard.service';
+
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { PurchaseComponent } from '../purchase/purchase.component';
