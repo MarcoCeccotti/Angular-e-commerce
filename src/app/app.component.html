@@ -1,3 +1,7 @@
+<app-header *ngIf="router.url != '/login' && router.url != '/registrate' && router.url != '/recover-password'"></app-header>
+
+<app-messages></app-messages>
+
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>

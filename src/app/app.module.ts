@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderModule } from './header/header.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,7 +21,8 @@ import { HttpOptions } from './services/http-options.service';
 import { TokenCheckService } from './services/token-check.service';
 import { MessagesService } from './services/messages.service';
 import { UserSession } from './services/user-session.service';
-import { AuthInterceptorService } from './auth-interceptor.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,15 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     RecoverPasswordComponent,
     ConfirmDialogComponent,
     FooterComponent,
-    RegistrateComponent
+    RegistrateComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderModule
   ],
   entryComponents: [
     ConfirmDialogComponent

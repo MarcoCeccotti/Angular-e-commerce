@@ -14,14 +14,12 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavigationRoutingModule } from './navigation-products-routing.module';
 import { HeaderModule } from '../header/header.module';
-import { MessagesComponent } from '../messages/messages.component';
 
 @NgModule({
   declarations: [
     ProductsListComponent,
     ProductsDetailComponent,
-    NavigationProductsComponent,
-    MessagesComponent
+    NavigationProductsComponent
   ],
   imports: [
     CommonModule,
@@ -29,8 +27,8 @@ import { MessagesComponent } from '../messages/messages.component';
     FormsModule,
     RouterModule,
     NgbModule,
-    NavigationRoutingModule,
-    HeaderModule
+    HeaderModule,
+    NavigationRoutingModule
   ],
   exports: [
     ProductsListComponent,
