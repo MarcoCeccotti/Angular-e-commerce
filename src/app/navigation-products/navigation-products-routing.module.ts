@@ -13,9 +13,7 @@ const routes: Routes = [
       roles: ['ROLE_ADM']
     }
   },
-  { path: ':id', canActivate: [AuthGuard], component: NavigationProductsComponent },
-  { path: '', loadChildren: () => import('../header/header.module').then(routing => routing.HeaderModule) },
-  { path: '**', redirectTo: '/products' }
+  { path: ':id', canActivate: [AuthGuard], component: NavigationProductsComponent }
 ];
 
 @NgModule({
