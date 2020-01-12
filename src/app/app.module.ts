@@ -7,21 +7,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
-import { ProductsService } from './services/products.service';
-import { LoginService } from './services/login.service';
-import { AuthGuard } from './services/auth-guard.service';
-import { HttpOptions } from './services/http-options.service';
-import { TokenCheckService } from './services/token-check.service';
-import { MessagesService } from './services/messages.service';
-import { RoleGuard } from './services/role-guard.service';
 import { RecoverPasswordComponent } from './recover_password/recover-password.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { RegistrateComponent } from './registrate/registrate.component';
 import { FooterComponent } from './footer/footer.component';
+
+import { ProductsService } from './services/products.service';
+import { LoginService } from './services/login.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { RoleGuard } from './services/role-guard.service';
+import { HttpOptions } from './services/http-options.service';
+import { TokenCheckService } from './services/token-check.service';
+import { MessagesService } from './services/messages.service';
 import { UserSession } from './services/user-session.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
-import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { HeaderModule } from './header/header.module';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    HeaderModule
+    AppRoutingModule
   ],
   entryComponents: [
     ConfirmDialogComponent
